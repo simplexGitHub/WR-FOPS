@@ -8,5 +8,6 @@
     "id": {
       "type": "string"
     }
-  }
+  },
+  "description": "The status of WRD - logical and technical"
 }
