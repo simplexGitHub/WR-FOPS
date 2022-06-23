@@ -13,9 +13,9 @@
     }
   ],
   "paths": {
-    "/api/startSendLandungData": {
+    "/api/startSendLandingData": {
       "post": {
-        "summary": "startSendLandungData",
+        "summary": "startSendLandingData",
         "operationId": "post-user",
         "responses": {
           "200": {
@@ -81,9 +81,9 @@
       },
       "parameters": []
     },
-    "/api/stopSendLandungData": {
+    "/api/stopSendLandingData": {
       "post": {
-        "summary": "stopSendLandungData",
+        "summary": "stopSendLandingData",
         "operationId": "post-api-stopSendLandungData",
         "responses": {
           "200": {
@@ -98,7 +98,8 @@
           }
         },
         "description": "Stop sending landingData"
-      }
+      },
+      "parameters": []
     }
   },
   "components": {
