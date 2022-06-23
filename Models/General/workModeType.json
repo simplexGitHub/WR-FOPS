@@ -1,0 +1,12 @@
+{
+  "type": "string",
+  "title": "workModeType",
+  "x-stoplight": {
+    "id": "qcip5iy0q72uv"
+  },
+  "description": "In case the requested mode is XYZ - send x,y,z distances from landing point. In case Mavlink mode - send mavlink commands for flying the drone",
+  "enum": [
+    "XYZ",
+    "Mavlink"
+  ]
+}

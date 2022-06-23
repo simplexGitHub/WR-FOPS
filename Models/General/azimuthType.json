@@ -1,0 +1,13 @@
+{
+  "type": "string",
+  "title": "azimuthType",
+  "x-stoplight": {
+    "id": "tefnsn6e1yyip"
+  },
+  "enum": [
+    "Auto",
+    "Defined",
+    "Free"
+  ],
+  "description": "Auto - WRD will analyze the landing shape and define the landing azimuth. The landing azimuth will be sent throught the landingData.\nDefined - as defined in the landingAzimuth field\nFree - does not matter wjat is the landing azimuth"
+}

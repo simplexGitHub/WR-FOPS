@@ -4,10 +4,43 @@
     "id": "rstw6v2538pw4"
   },
   "type": "object",
+  "description": "The status of WRD - logical and technical",
   "properties": {
-    "id": {
-      "type": "string"
+    "technicalStatus": {
+      "type": "string",
+      "enum": [
+        "OK",
+        "Warning",
+        "Error"
+      ],
+      "description": "The enum of the technical status. If Error then no dataLanding should be sent"
+    },
+    "technicalDescription": {
+      "type": "string",
+      "description": "Description of errors or warnings "
+    },
+    "workState": {
+      "type": "object",
+      "required": [
+        "azimuthMode",
+        "workMode",
+        "dataRelated"
+      ],
+      "description": "In case the workMode is XYZ",
+      "properties": {
+        "azimuthMode": {
+          "$ref": "./General/azimuthType.json"
+        },
+        "workMode": {
+          "$ref": "./General/workModeType.json"
+        },
+        "dataRelated": {
+          "$ref": "./General/dataRelatedType.json"
+        }
+      }
     }
   },
-  "description": "The status of WRD - logical and technical"
+  "required": [
+    "technicalStatus"
+  ]
 }
