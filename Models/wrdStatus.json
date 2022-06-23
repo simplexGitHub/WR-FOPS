@@ -1,0 +1,12 @@
+{
+  "title": "wrdStatus",
+  "x-stoplight": {
+    "id": "rstw6v2538pw4"
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    }
+  }
+}

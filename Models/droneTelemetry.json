@@ -1,0 +1,12 @@
+{
+  "title": "droneTelemetry",
+  "x-stoplight": {
+    "id": "1ldblsf1zc3zx"
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "title": "landingData",
+  "x-stoplight": {
+    "id": "i21ad4vma0xmc"
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    }
+  }
+}
