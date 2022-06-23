@@ -41,6 +41,14 @@
         "y",
         "z"
       ]
+    },
+    {
+      "properties": {
+        "TBD": {
+          "type": "string"
+        }
+      },
+      "description": "In case of mavlink commands"
     }
   ],
   "type": "object"
