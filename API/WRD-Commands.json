@@ -13,135 +13,9 @@
     }
   ],
   "paths": {
-    "/users/{userId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "integer"
-          },
-          "name": "userId",
-          "in": "path",
-          "required": true,
-          "description": "Id of an existing user."
-        }
-      ],
-      "get": {
-        "summary": "Get User Info by User ID",
-        "tags": [],
-        "responses": {
-          "200": {
-            "description": "User Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                },
-                "examples": {
-                  "Get User Alice Smith": {
-                    "value": {
-                      "id": 142,
-                      "firstName": "Alice",
-                      "lastName": "Smith",
-                      "email": "alice.smith@gmail.com",
-                      "dateOfBirth": "1997-10-31",
-                      "emailVerified": true,
-                      "signUpDate": "2019-08-24"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "User Not Found"
-          }
-        },
-        "operationId": "get-users-userId",
-        "description": "Retrieve the information of the user with the matching user ID."
-      },
-      "patch": {
-        "summary": "Update User Information",
-        "operationId": "patch-users-userId",
-        "responses": {
-          "200": {
-            "description": "User Updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                },
-                "examples": {
-                  "Updated User Rebecca Baker": {
-                    "value": {
-                      "id": 13,
-                      "firstName": "Rebecca",
-                      "lastName": "Baker",
-                      "email": "rebecca@gmail.com",
-                      "dateOfBirth": "1985-10-02",
-                      "emailVerified": false,
-                      "createDate": "2019-08-24"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "User Not Found"
-          },
-          "409": {
-            "description": "Email Already Taken"
-          }
-        },
-        "description": "Update the information of an existing user.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string",
-                    "description": "If a new email is given, the user's email verified property will be set to false."
-                  },
-                  "dateOfBirth": {
-                    "type": "string"
-                  }
-                }
-              },
-              "examples": {
-                "Update First Name": {
-                  "value": {
-                    "firstName": "Rebecca"
-                  }
-                },
-                "Update Email": {
-                  "value": {
-                    "email": "rebecca@gmail.com"
-                  }
-                },
-                "Update Last Name & Date of Birth": {
-                  "value": {
-                    "lastName": "Baker",
-                    "dateOfBirth": "1985-10-02"
-                  }
-                }
-              }
-            }
-          },
-          "description": "Patch user properties to update."
-        }
-      }
-    },
-    "/user": {
+    "/api/startSendLandungData": {
       "post": {
-        "summary": "Create New User",
+        "summary": "startSendLandungData",
         "operationId": "post-user",
         "responses": {
           "200": {
@@ -172,6 +46,9 @@
           },
           "409": {
             "description": "Email Already Taken"
+          },
+          "": {
+            "description": ""
           }
         },
         "requestBody": {
@@ -180,43 +57,41 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string"
-                  },
-                  "dateOfBirth": {
+                  "mode": {
                     "type": "string",
-                    "format": "date"
+                    "enum": [
+                      "XYZ",
+                      "Mavlink"
+                    ],
+                    "description": "In case the requested mode is XYZ - send x,y,z distances from landing point. In case Mavlink mode - send mavlink commands for flying the drone"
+                  },
+                  "landingAzimuth": {
+                    "type": "string",
+                    "description": "In case the azimuthType is \"Defined\" the value need to be the Azimuth related to true north"
+                  },
+                  "azimuthType": {
+                    "type": "string",
+                    "enum": [
+                      "Auto",
+                      "Defined",
+                      "Free"
+                    ],
+                    "description": "Auto - WRD will analyze the landing shape and define the landing azimuth. The landing azimuth will be sent throught the landingData.\nDefined - as defined in the landingAzimuth field\nFree - does not matter wjat is the landing azimuth"
                   }
                 },
                 "required": [
-                  "firstName",
-                  "lastName",
-                  "email",
-                  "dateOfBirth"
+                  "mode",
+                  "azimuthType"
                 ]
               },
-              "examples": {
-                "Create User Bob Fellow": {
-                  "value": {
-                    "firstName": "Bob",
-                    "lastName": "Fellow",
-                    "email": "bob.fellow@gmail.com",
-                    "dateOfBirth": "1996-08-24"
-                  }
-                }
-              }
+              "examples": {}
             }
           },
-          "description": "Post the necessary fields for the API to create a new user."
+          "description": "The requested mode and other parametes"
         },
-        "description": "Create a new user."
-      }
+        "description": "Commanding the WRD to start sending landing data according to the function parameters. In case the requested mode is XYZ - send x,y,z distances from landing point. In case Mavlink mode - send mavlink commands for flying the drone."
+      },
+      "parameters": []
     }
   },
   "components": {
