@@ -3,10 +3,45 @@
   "x-stoplight": {
     "id": "i21ad4vma0xmc"
   },
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string"
+  "description": "The landing data sent to FALS. \nIn case the requested mode is XYZ - send x,y,z distances from landing point. In case Mavlink mode - send mavlink commands for flying the drone.",
+  "oneOf": [
+    {
+      "description": "In case the requested mode was xyz",
+      "properties": {
+        "landingAzimuth": {
+          "type": "number",
+          "format": "float",
+          "minimum": 0,
+          "maximum": 359.9,
+          "multipleOf": 0.1,
+          "example": 333.5,
+          "description": "In case the azimuthType is \"Defined\" the value need to be the Azimuth related to true north"
+        },
+        "dataRelatedType": {
+          "$ref": "./General/dataRelatedType.json"
+        },
+        "x": {
+          "type": "number",
+          "format": "float",
+          "description": "The x distace from the target in meters"
+        },
+        "y": {
+          "type": "number",
+          "description": "The y distace from the target in meters",
+          "format": "float"
+        },
+        "z": {
+          "type": "number",
+          "format": "float",
+          "description": "The altitude in meters above ground"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ]
     }
-  }
+  ],
+  "type": "object"
 }

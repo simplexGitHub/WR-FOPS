@@ -1,0 +1,15 @@
+{
+  "type": "string",
+  "title": "dataRelatedType",
+  "x-stoplight": {
+    "id": "9kn38appaslq2"
+  },
+  "description": "If related to North then x,y,z are related to North meaning - \n+X = North\n-X = South\n+Y = East\n-Y = West\n\nBody - the reffrence is to the camera heading\n+X = Frame up\n-X = Frame down\n+Y = Frame left\n-Y = Frame right",
+  "enum": [
+    "North",
+    "Body"
+  ],
+  "examples": [
+    "North"
+  ]
+}

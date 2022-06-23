@@ -54,8 +54,13 @@
                     "description": "In case the requested mode is XYZ - send x,y,z distances from landing point. In case Mavlink mode - send mavlink commands for flying the drone"
                   },
                   "landingAzimuth": {
-                    "type": "string",
-                    "description": "In case the azimuthType is \"Defined\" the value need to be the Azimuth related to true north"
+                    "type": "number",
+                    "description": "In case the azimuthType is \"Defined\" the value need to be the Azimuth related to true north",
+                    "format": "float",
+                    "example": 340.6,
+                    "minimum": 0,
+                    "maximum": 359.9,
+                    "multipleOf": 0.1
                   },
                   "azimuthType": {
                     "type": "string",
@@ -65,6 +70,9 @@
                       "Free"
                     ],
                     "description": "Auto - WRD will analyze the landing shape and define the landing azimuth. The landing azimuth will be sent throught the landingData.\nDefined - as defined in the landingAzimuth field\nFree - does not matter wjat is the landing azimuth"
+                  },
+                  "dataRelatedType": {
+                    "$ref": "../Models/General/dataRelatedType.json"
                   }
                 },
                 "required": [
