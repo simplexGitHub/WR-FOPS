@@ -1,0 +1,16 @@
+{
+  "title": "ASYNC_RESPONSE",
+  "type": "object",
+  "description": "General response",
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "success"
+  ]
+}
