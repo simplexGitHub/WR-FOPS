@@ -34,21 +34,37 @@
           "type": "number",
           "format": "float",
           "description": "The altitude in meters above ground"
+        },
+        "FovRelativeX": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1,
+          "multipleOf": 0.01,
+          "description": "The location relative to the X direction FOV max.\n1.00 - max of fwd from drone X direction\n-1.00 - max of bwd from drone X direction"
+        },
+        "FovRelativeY": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1,
+          "multipleOf": 0.01,
+          "description": "The location relative to the Y direction FOV max.\n1.00 - max of right from drone in the Y direction\n-1.00 - max of left from drone in the Y direction"
         }
       },
       "required": [
         "x",
         "y",
-        "z"
+        "z",
+        "FovRelativeX",
+        "FovRelativeY"
       ]
     },
     {
+      "description": "In case of mavlink commands",
       "properties": {
         "TBD": {
           "type": "string"
         }
-      },
-      "description": "In case of mavlink commands"
+      }
     }
   ],
   "type": "object"
