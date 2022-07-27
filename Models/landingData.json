@@ -4,68 +4,76 @@
     "id": "i21ad4vma0xmc"
   },
   "description": "The landing data sent to FALS. \nIn case the requested mode is XYZ - send x,y,z distances from landing point. In case Mavlink mode - send mavlink commands for flying the drone.",
-  "oneOf": [
-    {
-      "description": "In case the requested mode was xyz",
-      "properties": {
-        "landingAzimuth": {
-          "type": "number",
-          "format": "float",
-          "minimum": 0,
-          "maximum": 359.9,
-          "multipleOf": 0.1,
-          "example": 333.5,
-          "description": "In case the azimuthType is \"Defined\" the value need to be the Azimuth related to true north"
+  "type": "object",
+  "properties": {
+    "landingData": {
+      "oneOf": [
+        {
+          "description": "In case the requested mode was xyz",
+          "properties": {
+            "landingAzimuth": {
+              "type": "number",
+              "format": "float",
+              "minimum": 0,
+              "maximum": 359.9,
+              "multipleOf": 0.1,
+              "example": 333.5,
+              "description": "In case the azimuthType is \"Defined\" the value need to be the Azimuth related to true north"
+            },
+            "dataRelatedType": {
+              "$ref": "./General/dataRelatedType.json"
+            },
+            "x": {
+              "type": "number",
+              "format": "float",
+              "description": "The x distace from the target in meters"
+            },
+            "y": {
+              "type": "number",
+              "description": "The y distace from the target in meters",
+              "format": "float"
+            },
+            "z": {
+              "type": "number",
+              "format": "float",
+              "description": "The altitude in meters above ground"
+            },
+            "FovRelativeX": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1,
+              "multipleOf": 0.01,
+              "description": "The location relative to the X direction FOV max.\n1.00 - max of fwd from drone X direction\n-1.00 - max of bwd from drone X direction"
+            },
+            "FovRelativeY": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1,
+              "multipleOf": 0.01,
+              "description": "The location relative to the Y direction FOV max.\n1.00 - max of right from drone in the Y direction\n-1.00 - max of left from drone in the Y direction"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "z",
+            "FovRelativeX",
+            "FovRelativeY"
+          ]
         },
-        "dataRelatedType": {
-          "$ref": "./General/dataRelatedType.json"
-        },
-        "x": {
-          "type": "number",
-          "format": "float",
-          "description": "The x distace from the target in meters"
-        },
-        "y": {
-          "type": "number",
-          "description": "The y distace from the target in meters",
-          "format": "float"
-        },
-        "z": {
-          "type": "number",
-          "format": "float",
-          "description": "The altitude in meters above ground"
-        },
-        "FovRelativeX": {
-          "type": "number",
-          "minimum": -1,
-          "maximum": 1,
-          "multipleOf": 0.01,
-          "description": "The location relative to the X direction FOV max.\n1.00 - max of fwd from drone X direction\n-1.00 - max of bwd from drone X direction"
-        },
-        "FovRelativeY": {
-          "type": "number",
-          "minimum": -1,
-          "maximum": 1,
-          "multipleOf": 0.01,
-          "description": "The location relative to the Y direction FOV max.\n1.00 - max of right from drone in the Y direction\n-1.00 - max of left from drone in the Y direction"
+        {
+          "description": "In case of mavlink commands",
+          "properties": {
+            "TBD": {
+              "type": "string"
+            }
+          }
         }
-      },
-      "required": [
-        "x",
-        "y",
-        "z",
-        "FovRelativeX",
-        "FovRelativeY"
-      ]
-    },
-    {
-      "description": "In case of mavlink commands",
-      "properties": {
-        "TBD": {
-          "type": "string"
-        }
-      }
+      ],
+      "type": "object"
     }
-  ],
-  "type": "object"
+  },
+  "required": [
+    "landingData"
+  ]
 }

@@ -6,41 +6,46 @@
   "type": "object",
   "description": "The status of WRD - logical and technical",
   "properties": {
-    "technicalStatus": {
-      "type": "string",
-      "enum": [
-        "OK",
-        "Warning",
-        "Error"
-      ],
-      "description": "The enum of the technical status. If Error then no dataLanding should be sent"
-    },
-    "technicalDescription": {
-      "type": "string",
-      "description": "Description of errors or warnings "
-    },
-    "workState": {
+    "wrdStatus": {
       "type": "object",
-      "required": [
-        "azimuthMode",
-        "workMode",
-        "dataRelated"
-      ],
-      "description": "In case the workMode is XYZ",
       "properties": {
-        "azimuthMode": {
-          "$ref": "./General/azimuthType.json"
+        "technicalStatus": {
+          "type": "string",
+          "enum": [
+            "OK",
+            "Warning",
+            "Error"
+          ],
+          "description": "The enum of the technical status. If Error then no dataLanding should be sent"
         },
-        "workMode": {
-          "$ref": "./General/workModeType.json"
+        "technicalDescription": {
+          "type": "string",
+          "description": "Description of errors or warnings "
         },
-        "dataRelated": {
-          "$ref": "./General/dataRelatedType.json"
+        "workState": {
+          "type": "object",
+          "description": "In case the workMode is XYZ",
+          "properties": {
+            "azimuthMode": {
+              "$ref": "./General/azimuthType.json"
+            },
+            "workMode": {
+              "$ref": "./General/workModeType.json"
+            },
+            "dataRelated": {
+              "$ref": "./General/dataRelatedType.json"
+            }
+          },
+          "required": [
+            "azimuthMode",
+            "workMode",
+            "dataRelated"
+          ]
         }
       }
     }
   },
   "required": [
-    "technicalStatus"
+    "wrdStatus"
   ]
 }
