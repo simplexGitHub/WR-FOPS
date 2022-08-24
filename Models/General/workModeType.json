@@ -8,5 +8,8 @@
   "enum": [
     "XYZ",
     "Mavlink"
+  ],
+  "examples": [
+    "XYZ"
   ]
 }

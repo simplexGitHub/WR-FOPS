@@ -5,6 +5,19 @@
   },
   "description": "The landing data sent to FALS. \nIn case the requested mode is XYZ - send x,y,z distances from landing point. In case Mavlink mode - send mavlink commands for flying the drone.",
   "type": "object",
+  "examples": [
+    {
+      "landingData": {
+        "landingAzimuth": 333.5,
+        "dataRelatedType": "North",
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "FovRelativeX": -1,
+        "FovRelativeY": -1
+      }
+    }
+  ],
   "properties": {
     "landingData": {
       "oneOf": [
@@ -36,7 +49,7 @@
             "z": {
               "type": "number",
               "format": "float",
-              "description": "The altitude in meters above ground"
+              "description": "The altitude in meters above ground\nIf no accurate altitude - omit field"
             },
             "FovRelativeX": {
               "type": "number",
@@ -56,7 +69,6 @@
           "required": [
             "x",
             "y",
-            "z",
             "FovRelativeX",
             "FovRelativeY"
           ]

@@ -47,5 +47,29 @@
   },
   "required": [
     "wrdStatus"
+  ],
+  "examples": [
+    {
+      "wrdStatus": {
+        "technicalStatus": "OK",
+        "technicalDescription": "string",
+        "workState": {
+          "azimuthMode": "Auto",
+          "workMode": "XYZ",
+          "dataRelated": "North"
+        }
+      }
+    },
+    {
+      "wrdStatus": {
+        "technicalStatus": "OK",
+        "technicalDescription": "string",
+        "workState": {
+          "azimuthMode": "Auto",
+          "workMode": "XYZ",
+          "dataRelated": "North"
+        }
+      }
+    }
   ]
 }
