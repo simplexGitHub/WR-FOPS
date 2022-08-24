@@ -5,9 +5,36 @@
   },
   "type": "object",
   "description": "The status of WRD - logical and technical",
+  "examples": [
+    {
+      "wrdStatus": {
+        "technicalStatus": "OK",
+        "technicalDescription": "string",
+        "workState": {
+          "azimuthMode": "Auto",
+          "workMode": "XYZ",
+          "dataRelated": "North"
+        }
+      }
+    },
+    {
+      "wrdStatus": {
+        "technicalStatus": "OK",
+        "technicalDescription": "string",
+        "workState": {
+          "azimuthMode": "Auto",
+          "workMode": "XYZ",
+          "dataRelated": "North"
+        }
+      }
+    }
+  ],
   "properties": {
     "wrdStatus": {
       "type": "object",
+      "required": [
+        "isDataValid"
+      ],
       "properties": {
         "technicalStatus": {
           "type": "string",
@@ -21,6 +48,10 @@
         "technicalDescription": {
           "type": "string",
           "description": "Description of errors or warnings "
+        },
+        "isDataValid": {
+          "type": "boolean",
+          "description": "If the landing data accurate and valid"
         },
         "workState": {
           "type": "object",
@@ -47,29 +78,5 @@
   },
   "required": [
     "wrdStatus"
-  ],
-  "examples": [
-    {
-      "wrdStatus": {
-        "technicalStatus": "OK",
-        "technicalDescription": "string",
-        "workState": {
-          "azimuthMode": "Auto",
-          "workMode": "XYZ",
-          "dataRelated": "North"
-        }
-      }
-    },
-    {
-      "wrdStatus": {
-        "technicalStatus": "OK",
-        "technicalDescription": "string",
-        "workState": {
-          "azimuthMode": "Auto",
-          "workMode": "XYZ",
-          "dataRelated": "North"
-        }
-      }
-    }
   ]
 }
