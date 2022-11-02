@@ -62,6 +62,14 @@
                   },
                   "dataRelatedType": {
                     "$ref": "../Models/General/dataRelatedType.json"
+                  },
+                  "controller": {
+                    "type": "string",
+                    "enum": [
+                      "PX4",
+                      "ArduCopter"
+                    ],
+                    "description": "In case the mode type is \"Mavlink\" send the controller firmware type"
                   }
                 },
                 "required": [
