@@ -33,7 +33,8 @@
     "wrdStatus": {
       "type": "object",
       "required": [
-        "isDataValid"
+        "isDataValid",
+        "owner"
       ],
       "properties": {
         "technicalStatus": {
@@ -71,6 +72,13 @@
             "azimuthMode",
             "workMode",
             "dataRelated"
+          ]
+        },
+        "owner": {
+          "type": "string",
+          "enum": [
+            "Flightops",
+            "WR"
           ]
         }
       }
